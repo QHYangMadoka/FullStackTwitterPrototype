@@ -33,14 +33,27 @@
 
 ### How to Use
 
-1. Visit the frontend URL to access the app.
-2. **Login:** Use the default user `Alice` with the password `Password123` to log in.
-3. **View Posts:** View all existing posts on the homepage.
-4. **Create Posts:** Once logged in, create a post by typing content in the text box and clicking "Post."
-5. **Delete Posts:** Logged-in users can delete their own posts.
-6. **Search Posts:** Use the search functionality to filter posts based on keywords.
-7. **Edit Profile Description:** Logged-in users can update their profile description, which will persist across sessions.
-8. **Navigate:** Use the navbar to switch between pages (Home and Profile).
+1. **Login**  
+   Use the default user credentials:  
+   - **Username:** `Alice`  
+   - **Password:** `Password123`  
+
+   ![Login Page](pics/Login.png)
+
+2. **Homepage**  
+   Once logged in, view all existing posts. Logged-in users can also create new posts by typing content and clicking "Post."
+
+   ![Home Page](pics/HomePage.png)
+
+3. **Search Posts**  
+   Use the search bar at the top to filter posts based on keywords.
+
+   ![Search Posts](pics/Search.png)
+
+4. **User Profile**  
+   Navigate to the profile page to view and edit the user description. Updates will persist across sessions.
+
+   ![User Page](pics/User.png)
 
 ### Features Implemented
 - User authentication (login/logout)
