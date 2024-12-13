@@ -15,7 +15,7 @@ const app = express();
 
 // Allowed origins for CORS
 const allowedOrigins = [
-  'https://qhmadoka-twitterApp.onrender.com', // Replace with your actual frontend URL
+  'https://qhmadoka-twitterapp.onrender.com', 
   'http://localhost:5173' // For local development
 ];
 
