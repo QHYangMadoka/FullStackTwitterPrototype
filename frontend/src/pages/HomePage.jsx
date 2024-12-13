@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../config/api';
 
 const HomePage = () => {
   const { user } = useAuth(); // Access user state
@@ -11,7 +12,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/posts');
+        const response = await fetch(`${API_BASE_URL}/api/posts`);
         const data = await response.json();
         setPosts(data);
         setFilteredPosts(data); // Initialize filtered posts
@@ -45,14 +46,14 @@ const HomePage = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/posts', {
+      const response = await fetch(`${API_BASE_URL}/api/posts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: user.username, content: newPost.content }),
       });
       if (response.ok) {
         setNewPost({ username: user.username, content: '' });
-        const updatedPosts = await (await fetch('http://localhost:5000/api/posts')).json();
+        const updatedPosts = await (await fetch(`${API_BASE_URL}/api/posts`)).json();
         setPosts(updatedPosts);
         setFilteredPosts(updatedPosts);
       }

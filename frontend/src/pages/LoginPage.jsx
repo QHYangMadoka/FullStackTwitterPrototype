@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; // Import AuthContext for user state management
+import { API_BASE_URL } from '../config/api'; // Import API_BASE_URL
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -12,7 +13,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -29,7 +30,6 @@ const LoginPage = () => {
       alert('Server error. Please try again later.');
     }
   };
-  
 
   return (
     <div className="login-page">
