@@ -1,19 +1,26 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 // Create a context for authentication
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // User state
+  const [user, setUser] = useState(() => {
+    // Retrieve user from localStorage on initialization
+    const storedUser = localStorage.getItem('user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
 
   // Login function
   const login = (username) => {
-    setUser({ username }); // Simulate login
+    const newUser = { username };
+    setUser(newUser);
+    localStorage.setItem('user', JSON.stringify(newUser)); // Save to localStorage
   };
 
   // Logout function
   const logout = () => {
-    setUser(null); // Clear user state
+    setUser(null);
+    localStorage.removeItem('user'); // Clear from localStorage
   };
 
   return (

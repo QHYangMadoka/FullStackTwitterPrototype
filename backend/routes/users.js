@@ -1,57 +1,33 @@
 import express from 'express';
-import User from '../models/User.js'; // Import user model
-import Post from '../models/Post.js'; // Assuming you have a Post model
+import {
+  registerUser,
+  getUserProfile,
+  uploadAvatar,
+  updateUserDescription,
+  uploadMiddleware,
+  getUserWithPosts,
+  deleteUserAccount,
+} from '../controllers/users.js';
 
 const router = express.Router();
 
-// Get user details
-router.get('/:username', async (req, res) => {
-  const { username } = req.params;
-  try {
-    const user = await User.findOne({ username });
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
+// User registration route
+router.post('/register', registerUser);
 
-    // Fetch user's posts (if you have a Post model and user-post relationship)
-    const posts = await Post.find({ username }).sort({ timestamp: -1 });
+// Get user profile
+router.get('/:username', getUserProfile);
 
-    res.json({
-      username: user.username,
-      description: user.description || '',
-      joinedDate: user.createdAt,
-      posts,
-    });
-  } catch (err) {
-    console.error('Error fetching user details:', err);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
+// Upload user avatar
+router.put('/:username/avatar', uploadMiddleware, uploadAvatar);
 
 // Update user description
-router.put('/:username/description', async (req, res) => {
-  const { username } = req.params;
-  const { description } = req.body;
+router.put('/:username/description', updateUserDescription);
 
-  if (!description || description.trim() === '') {
-    return res.status(400).json({ error: 'Description cannot be empty' });
-  }
+// Get user profile with posts
+router.get('/:username/posts', getUserWithPosts);
 
-  try {
-    const user = await User.findOneAndUpdate(
-      { username },
-      { description },
-      { new: true }
-    );
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
+// Delete user account
+router.delete('/:username', deleteUserAccount);
 
-    res.json({ description: user.description });
-  } catch (err) {
-    console.error('Error updating user description:', err);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
 
 export default router;

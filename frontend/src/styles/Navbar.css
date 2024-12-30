@@ -1,0 +1,47 @@
+/* Navbar Container */
+.navbar {
+    background-color: var(--primary-color); /* Green background */
+    padding: 1rem 2rem; /* Padding around navbar */
+    display: flex;
+    justify-content: space-between; /* Space between links and buttons */
+    align-items: center;
+    color: white; /* Default text color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+/* Navbar Links */
+.navbar-link {
+    color: white;
+    text-decoration: none; /* Remove underline */
+    margin-right: 1rem; /* Space between links */
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #dcedc8; /* Light green hover effect */
+}
+
+/* Navbar Buttons */
+.navbar-button {
+    background-color: white;
+    color: var(--primary-color); /* Text matches primary color */
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.navbar-button:hover {
+    background-color: #388e3c; /* Darker green hover effect */
+    color: white; /* Text turns white */
+    transform: translateY(-2px); /* Slight hover lift */
+}
+
+.navbar-button:active {
+    transform: translateY(0); /* Reset position on click */
+}
+  

@@ -1,0 +1,376 @@
+/* HomePage Layout */
+.homepage {
+    padding: 2rem;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+
+}
+
+/* Search Bar */
+.search-bar {
+    width: 100%;
+    padding: 0.8em 1em;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Post List Layout */
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; /* Spacing between posts */
+    flex: 1; /* Allow it to take available space */
+    width: 100%; /* Full width */
+    max-width: 800px; /* Limit maximum width */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin: 1rem auto; /* Center horizontally and add spacing */
+    padding: 0 1rem; /* Add left and right padding */
+    padding-right: 1.5rem; /* Reserve space for scrollbar */
+    height: calc(100vh - 250px); /* Deduct CreatePost's height and spacing */
+    box-sizing: border-box; /* Include padding in total dimensions */
+}
+
+/* Post Styling */
+.post {
+    position: relative; /* For positioning child elements like delete button */
+    background-color: white;
+    width: 100%; /* Allow full width within container */
+    max-width: 800px; /* Limit maximum width for consistency */
+    margin: 0 auto 2rem; /* Center posts and add spacing below */
+    padding: 1.5rem; /* Add internal spacing */
+    border-radius: 8px; /* Rounded corners for better aesthetics */
+    box-shadow: var(--box-shadow); /* Global shadow for consistent style */
+    box-sizing: border-box; 
+}
+
+.post h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-align: left; /* Align name to the left */
+    font-family: 'Georgia', 'Times New Roman', serif; /* Use a decorative serif font */
+    font-weight: bold; /* Ensure bold weight */
+}
+
+.post p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    color: #333;
+    text-align: left; /* Align content to the left */
+    font-family: 'Arial', 'Roboto', sans-serif; /* Use a rounded sans-serif font */
+    line-height: 1.6; /* Set a slightly larger line height for readability */
+}
+
+.post small {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.post button {
+    margin-top: 0.5rem;
+}
+
+
+/* Button Styling */
+button {
+    border-radius: 12px;
+    border: 1px solid transparent;
+    padding: 0.8em 1.5em;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.25s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+button.delete-button {
+    padding: 0.5rem 1rem;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.delete-button:hover {
+    background-color: darkred;
+}
+
+/* Create New Post Form */
+.create-post-form {
+    position: fixed; /* Fix it at the bottom of the viewport */
+    bottom: 0; /* Align to the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    width: 100%; /* Full width */
+    max-width: 800px; /* Match the maximum width of posts */
+    padding: 1.5rem; /* Adjust padding for better spacing */
+    background-color: #fff; /* Background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: var(--box-shadow); /* Add shadow for better visibility */
+    box-sizing: border-box;
+}
+
+
+.create-post-form input,
+.create-post-form textarea {
+    display: block;
+    width: 100%; /* Make inputs take full width */
+    margin-bottom: 1rem;
+    padding: 0.8em;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* Prevent overflow due to padding */
+}
+
+.create-post-form textarea {
+    min-height: 100px; /* Set a minimum height for textarea */
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+.create-post-form button {
+    padding: 0.8em 1.5em;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.create-post-form button:hover {
+    background-color: #388e3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.post {
+    width: 90%;
+    padding: 0.8rem;
+}
+
+.post h2 {
+    font-size: 1.2rem;
+}
+
+.create-post-form {
+    width: 90%;
+}
+}
+  
+  
+/* Delete Button */
+.delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.delete-button:hover {
+    color: red;
+}
+
+/* Post Footer */
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    margin-top: 1rem;
+    border-top: 1px solid #ddd; /* Add a subtle separator */
+}
+
+/* Like Section */
+.like-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.like-button {
+    background-color: transparent;
+    border: none;
+    font-size: 0.8rem; /* Smaller font size for button */
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.like-button:hover {
+    color: #388e3c;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.like-section span {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Post Date */
+.post-date {
+    font-size: var(--font-size-small); /* Use a smaller font size */
+    color: var(--secondary-color);
+    white-space: nowrap;
+}
+  
+.comment-button {
+    display: flex; /* Arrange image and text horizontally */
+    align-items: center; /* Vertically center the content */
+    border: none; /* Remove the default button border */
+    background: none; /* Remove the default button background */
+    cursor: pointer; /* Change the cursor to a pointer */
+    padding: 8px; /* Add internal padding for better spacing */
+}
+  
+.comment-icon {
+    width: 32px; /* Set the image width */
+    height: 32px; /* Set the image height */
+    margin-right: 8px; /* Add space between the image and text */
+}
+  
+.comment-text {
+    font-size: 16px; /* Set the font size for the text */
+    color: green; /* Set the text color to green */
+    font-weight: bold; /* Make the text bold */
+}
+
+.comments-section {
+    margin-top: 1rem; /* Add spacing between post and comments */
+    padding-left: 1rem; /* Align comments to the left */
+  }
+  
+.comment-item {
+    display: flex;
+    position: relative; /* Enable positioning for delete button */
+    background-color: #f0f8ff; /* Light blue background */
+    border: 1px solid #d6e9f5; /* Border with slightly darker blue */
+    border-radius: 8px; /* Rounded corners */
+    padding: 0.8rem; /* Add internal spacing */
+    margin-bottom: 0.8rem; /* Spacing between comments */
+    max-width: 90%; /* Restrict maximum width */
+}
+  
+.comment-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+  
+.comment-content {
+    font-size: 1rem; /* Adjust font size */
+    color: #333; /* Darker text for better contrast */
+}
+  
+.comment-timestamp {
+    font-size: 0.8rem; /* Smaller font for timestamp */
+    color: #555; /* Lighter text color */
+    margin-top: 0.5rem; /* Add spacing above timestamp */
+    text-align: right; /* Align timestamp to the right */
+    position: absolute; /* Position it absolutely */
+    bottom: 8px; /* Adjust position from the bottom */
+    right: 8px; /* Adjust position from the right */
+    z-index: 5;
+}
+  
+.delete-comment-button {
+    position: absolute; /* Position button absolutely */
+    top: 6px; /* Adjust from top */
+    right: 6px; /* Adjust from right */
+    background-color: #ffebee; /* Light red background */
+    border: 1px solid #ff4d4f; /* Red border */
+    color: #ff4d4f; /* Red color for delete button */
+    font-size: 1rem; /* Smaller font size */
+    padding: 2px 4px; /* Add padding for better size */
+    border-radius: 2px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    z-index: 10;
+}
+  
+.delete-comment-button:hover {
+    background-color: #ff4d4f; /* Darker red on hover */
+    color: #fff; /* White text on hover */
+    border-color: #ff0000; /* Darker border on hover */
+}
+  
+.new-comment-input {
+    width: 90%; /* Match the comment width */
+    margin-top: 0.5rem; /* Add spacing above */
+    padding: 0.5rem; /* Internal padding */
+    border: 1px solid #d6e9f5; /* Match border style */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1rem; /* Font size */
+}
+  
+.create-comment-button {
+    margin-top: 0.5rem; /* Add spacing above */
+    padding: 0.5rem 1rem; /* Padding for button */
+    background-color: #007bff; /* Blue background */
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+  
+.create-comment-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+  
+
+.comment-username {
+    font-size: 1rem; /* Adjust username font size */
+    font-weight: bold; /* Make username bold */
+    color: #007bff; /* Blue color for username */
+    margin-bottom: 0.5rem; /* Add spacing below the username */
+    display: block; /* Ensure username is on a separate line */
+}
+
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+  
+.avatar-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.avatar-circle-small {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+  
+  
